@@ -5,7 +5,7 @@ services:
     ports:
       - '8000:80'
     volumes:
-      - 'mediawiki_data/images:/var/www/html/images'
-      - 'mediawiki_data/LocalSettings.php:/var/www/html/LocalSettings.php'
-      - 'parsoid_data:/usr/lib/parsoid'
+      - '/home/ubuntu/docker/mediawiki_data/images:/var/www/html/images'
+      - '/home/ubuntu/docker/mediawiki_data/LocalSettings.php:/var/www/html/LocalSettings.php'
+      - '/home/ubuntu/docker/parsoid_data:/usr/lib/parsoid'
 
