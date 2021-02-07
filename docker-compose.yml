@@ -1,6 +1,8 @@
 version: '2'
 services:
   mediawiki:
+    hostname: mediawiki
+    container_name: mediawiki
     image: 'revianlabs/mediawiki-ve-bundle'
     ports:
       - '8000:80'
