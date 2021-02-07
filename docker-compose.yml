@@ -1,35 +1,11 @@
 version: '2'
 services:
-  mariadb:
-    image: 'mariadb:10.4.4'
-    environment:
-      - MYSQL_ROOT_PASSWORD=root_pwd
-      - MYSQL_USER=mysql_user
-      - MYSQL_PASSWORD=mysql_pwd
-      - MYSQL_DATABASE=mysql_database
-    volumes:
-      - 'mariadb_data:/var/lib/mysql'
   mediawiki:
     image: 'revianlabs/mediawiki-ve-bundle'
     ports:
       - '8000:80'
     volumes:
-      - 'mediawiki_data:/var/www/html'
+      - 'mediawiki_data/images:/var/www/html/images'
+      - 'mediawiki_data/LocalSettings.php:/var/www/html/LocalSettings.php'
       - 'parsoid_data:/usr/lib/parsoid'
-    depends_on:
-      - mariadb
-volumes:
-  mariadb_data:
-    driver: local
-  mediawiki_data:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '/var/www/mediawiki_data'
-  parsoid_data:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '/var/www/parsoid_data'
+
